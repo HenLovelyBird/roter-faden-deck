@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invisible Thread Deck</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #f0f0f0;
+      font-family: 'Georgia', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background: #1e1e1e;
+      border: 2px solid #444;
+      border-radius: 16px;
+      width: 300px;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ccc;
+      font-size: 1.2rem;
+      padding: 20px;
+      margin: 10px;
+      transition: all 0.6s ease;
+      cursor: pointer;
+      perspective: 1000px;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+    }
+    .card.flipped {
+      transform: rotateY(180deg);
+      background: #292929;
+    }
+    .button {
+      margin-top: 20px;
+      background: #333;
+      color: #eee;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 0 6px rgba(255,255,255,0.1);
+    }
+    .button:hover {
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="card" id="ritualCard" onclick="flipCard()">
+    Click to draw a ritual
+  </div>
+  <button class="button" onclick="drawRitual()">Shuffle & Draw</button>
+
+  <script>
+    const rituals = [
+      "The Whisper Archive: Record yourself whispering one word that holds meaning. Send it. No context.",
+      "Carry Them: Keep their name or phrase about them in your pocket all day.",
+      "Invisible Mirror: Gaze at yourself for 2 minutes, say 'You are loved through me.'",
+      "Object Offering: Place a found object outdoors, under the sky, as a bond-offering.",
+      "Shared Tool: hold it with the left hand while closing the left eye and gazing at it with the right for 30 seconds. Before using it, hold it with the right hand while closing the right eye and gazing for 30 seconds",
+      "Dream Sending: Write their name, place it under your pillow. Report dream/s if any.",
+      "Silent Bite: Eat one bite slowly, as if it were a shared kiss.",
+      "Movement Message: Move in 3 gestures, send video w/o words.",
+      "Recollection Ritual: Speak a memory under moon or gazing at flame.",
+      "Skin Sigil: Mark your skin with a symbol of the bond (visible or invisible).",
+      "Hidden Message: Choose a word that describes your feelings for the other. Surreptitiously use that word at some point during three substantial conversations you have with other people on three different days.",
+      "Laying apart together: When going to bed, position yourself in imitation of the manner of the other. Hold an image of them doing the same in your mind’s eye as if floating above them and focus on this as you fall asleep."
+    ];
+
+    function drawRitual() {
+      const card = document.getElementById('ritualCard');
+      const index = Math.floor(Math.random() * rituals.length);
+      card.textContent = rituals[index];
+      card.classList.add('flipped');
+    }
+
+    function flipCard() {
+      const card = document.getElementById('ritualCard');
+      card.classList.toggle('flipped');
+    }
+  </script>
+</body>
+</html>
